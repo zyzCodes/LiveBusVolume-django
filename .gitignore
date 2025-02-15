@@ -3,6 +3,7 @@ venv/
 .Venv/
 env/
 .Env/
+.env
 
 # Ignore system files
 __pycache__/
@@ -13,3 +14,6 @@ __pycache__/
 # Ignore IDE files
 .vscode/
 .idea/
+
+client.properties
+client.requirements
