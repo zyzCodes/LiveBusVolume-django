@@ -5,6 +5,12 @@ env/
 .Env/
 .env
 
+# Ommit the Jar file
+*.jar
+
+# Ignore the weights
+/efficientdet_d0_coco17_tpu-32
+
 # Ignore system files
 __pycache__/
 *.py[cod]
