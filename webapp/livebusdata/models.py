@@ -1,5 +1,4 @@
 from django.db import models
-
 class Bus(models.Model):
     bus_id = models.IntegerField()
     route = models.IntegerField()
