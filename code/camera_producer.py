@@ -7,6 +7,8 @@ import time
 import random
 import uuid
 import argparse
+import json
+import numpy as np
 
 import client
 
@@ -46,18 +48,24 @@ def capture(produce: bool, debug: bool, frame_count: int = -1) -> None:
                 continue
             
             compressed_bytes = lzma.compress(jpg_buffer.tobytes())
+            decompressed_bytes = lzma.decompress(compressed_bytes)
+            nparr = np.frombuffer(decompressed_bytes, dtype=np.uint8)
+            img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            cv2.imwrite("output.jpg", img)
+            cv2.imwrite("frame.jpg", frame)
+
             if produce:
 
                 message = {
                     'timestamp': time.time(),
-                    'frame': compressed_bytes,
-                    'bus_id': uuid.uuid4().int,
+                    'frame': str(compressed_bytes),
+                    'bus_id': str(uuid.uuid4().int),
                     'route_id': random.randint(1, 114)
                 }
 
-                serialized_message = pickle.dumps(message, protocol=pickle.HIGHEST_PROTOCOL) #serialize with pickle
+                # serialized_message = pickle.dumps(message, protocol=pickle.HIGHEST_PROTOCOL) #serialize with pickle
 
-                client.produce("camera-raw", config, serialized_message)
+                client.produce("camera-raw", config, json.dumps(message).encode("utf-8")) #send to kafka
 
             if debug: 
                 print(f"JPEG size: {len(jpg_buffer)} bytes, Compressed size: {len(compressed_bytes)} bytes")
