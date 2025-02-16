@@ -6,8 +6,7 @@ class Bus(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # Ensures uniqueness
-        unique_together = ('bus_id', 'timestamp')  
+        unique_together = ('bus_id', 'timestamp')  # Ensures uniqueness
 
     def __str__(self):
         return f"Bus {self.bus_id} on Route {self.route} at {self.timestamp}"

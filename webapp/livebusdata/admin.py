@@ -5,4 +5,3 @@ from .models import Bus
 class BusAdmin(admin.ModelAdmin):
     list_display = ('bus_id', 'route', 'passengers', 'timestamp')
     search_fields = ('bus_id', 'route')
-
