@@ -17,10 +17,10 @@
     </nav>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">📊 Bus Ridership Analytics</h1>
+        <h1 class="text-center mb-4">Bus Ridership Analytics</h1>
 
         <!-- Average Passengers Per Route -->
-        <h3 class="mt-4">🚏 Average Passengers Per Route</h3>
+        <h3 class="mt-4">Average Passengers Per Route</h3>
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -43,11 +43,13 @@
         </table>
 
         <!-- Peak Hour -->
-        <h3 class="mt-4">⏰ Peak Hour</h3>
+        <hr>
+        <h3 class="mt-4">Peak Hour</h3>
         <p class="lead">{% if peak_hour %} Most crowded hour: <strong>{{ peak_hour.hour }}:00</strong> with <strong>{{ peak_hour.total_passengers }}</strong> passengers. {% else %} No data available. {% endif %}</p>
 
+        <hr>
         <!-- Top 5 Most Used Routes -->
-        <h3 class="mt-4">🏆 Top 5 Most Used Routes</h3>
+        <h3 class="mt-4">Top 5 Most Used Routes</h3>
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>

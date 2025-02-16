@@ -1,0 +1,33 @@
+services:
+  bus_app:  # Renamed from pollsapp to bus_app
+    build: .
+    container_name: django_app
+    command: gunicorn webapp.wsgi:application --bind 0.0.0.0:8000
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=mydatabase
+      - DB_USER=myuser
+      - DB_PASSWORD=mypassword
+      - DB_PORT=5432
+      - DB_ENGINE=django.db.backends.postgresql
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"  # <--- This makes Django accessible from localhost  
+
+  postgres:
+    env_file:
+      - .env
+    image: postgres:15
+    container_name: postgres_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydatabase
+
+volumes:
+  postgres_data:
