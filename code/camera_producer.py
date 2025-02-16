@@ -9,6 +9,7 @@ import uuid
 import argparse
 import json
 import numpy as np
+import datetime
 
 import client
 
@@ -55,9 +56,9 @@ def capture(produce: bool, debug: bool, frame_count: int = -1) -> None:
             cv2.imwrite("frame.jpg", frame)
 
             if produce:
-
+                timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='microseconds')
                 message = {
-                    'timestamp': time.time(),
+                    'timestamp': timestamp,
                     'frame': str(compressed_bytes),
                     'bus_id': str(uuid.uuid4().int),
                     'route_id': random.randint(1, 114)
@@ -68,7 +69,9 @@ def capture(produce: bool, debug: bool, frame_count: int = -1) -> None:
                 client.produce("camera-raw", config, json.dumps(message).encode("utf-8")) #send to kafka
 
             if debug: 
-                print(f"JPEG size: {len(jpg_buffer)} bytes, Compressed size: {len(compressed_bytes)} bytes")
+                print(f"JPEG size: {len(jpg_buffer)} bytes, Compressed size: {len(compressed_bytes)} bytes at timestamp {datetime.datetime.now().isoformat(timespec='microseconds')}")
+            
+            time.sleep(0.95)
 
     except KeyboardInterrupt:
         print("Interrupted by user.")
