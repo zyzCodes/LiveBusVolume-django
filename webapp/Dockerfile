@@ -24,4 +24,5 @@ COPY app /app
 WORKDIR /app
 
 # Command to start Gunicorn server
-CMD ["gunicorn", "webapp.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "--workers=4", "--bind", "0.0.0.0:8000", "webapp.wsgi:application"]
+
