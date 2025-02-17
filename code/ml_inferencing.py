@@ -10,8 +10,7 @@ def generate_volume(arrays:list[np.ndarray]):
     return max_detections
     
 def __generate_unique_volume(model:YOLO,array:np.ndarray)->int:
-    breakpoint()
-    results = model.predict(array)
+    results = model.predict(array,)
     boxes = results[0].boxes.numpy()
     human_id = 0
     detected_boxes = boxes.cls
