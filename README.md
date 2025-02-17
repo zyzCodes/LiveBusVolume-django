@@ -179,6 +179,4 @@ flowchart LR
     D --> E[Firebase/NoSQL]
     E --> F[Dashboard & Analytics]
 
-```mermaid
-
 
