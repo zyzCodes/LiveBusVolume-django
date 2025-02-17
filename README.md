@@ -147,6 +147,39 @@ Our platform offers a broad range of benefits that extend well beyond simple tra
 - **Processing:**  
   Apache Flink runs ML object detection models in real time, producing count data.
 
+
+## Optimization Strategies
+
+To further enhance real-time analytics and improve decision-making, our platform incorporates several optimization techniques:
+
+### **1. WebSocket Subscription for Real-Time Updates**  
+- Instead of relying solely on periodic API polling, the frontend subscribes to an **Apache Kafka topic via a WebSocket connection**.  
+- This ensures that updates on passenger counts, bus occupancy, and traffic conditions are **instantly pushed** to the dashboard, reducing latency and improving responsiveness.
+
+### **2. Display Anonymized Images for Contextual Insights**  
+- To provide **visual verification** without compromising privacy, the system can display **blurred, anonymized images** next to live dashboard analytics.  
+- This feature allows transit agencies to **validate passenger counts** and identify **potential operational issues**, such as overcrowding or improper seating distribution.  
+- The anonymization ensures compliance with data privacy laws while **enhancing situational awareness**.
+
+### **3. Live Bus Tracking with Data Overlay**  
+- **GPS integration** allows for real-time tracking of each bus, displaying its exact location on a city map.  
+- Overlaying **real-time passenger load** on each tracked vehicle enables better routing and **adaptive scheduling**, ensuring optimized resource allocation.
+
+### **4. Spatial Fragmentation Analysis for Improved Bus Utilization**  
+- Instead of treating the entire bus as a single occupancy metric, our system applies **spatial fragmentation** by segmenting the vehicle into multiple sections (e.g., front, middle, back).  
+- Each section’s occupancy is analyzed separately, allowing for:
+  - Identification of **underutilized spaces** within the bus.
+  - Adjustments to **seating arrangements** for better passenger distribution.
+  - Recommendations for **dynamic bus design** optimizations based on usage patterns.
+  
+### **5. Government & Policy Recommendations**  
+- The insights generated from **spatial fragmentation, real-time occupancy, and traffic flow data** provide governments with the ability to:
+  - Develop **better public transportation policies**.
+  - Implement **targeted infrastructure improvements**.
+  - Justify budget allocations for **fleet expansion or reallocation**.
+  - Introduce **incentive programs** to distribute passenger load across different hours or routes.
+
+
 - **Visualization:**  
   Access the dashboard to view live analytics, monitor transit volume, and derive actionable insights.
 
