@@ -55,17 +55,6 @@ Smart Transit Real-Time Analytics transforms existing camera infrastructure into
 4. **Dashboard Integration:**  
    Processed data is fed into dashboards to display live transit statistics and insights.
 
-> **Diagram (Conceptual):**
-
-```mermaid
-flowchart LR
-    A[Camera Feeds] --> B[Apache Kafka]
-    B --> C[Apache Flink]
-    C --> D[ML Object Detection]
-    D --> E[Firebase/NoSQL]
-    E --> F[Dashboard & Analytics]
-
-
 
 ### Data Streaming & Processing
 - **Confluent Apache Kafka**
@@ -185,3 +174,15 @@ To further enhance real-time analytics and improve decision-making, our platform
 
 - **Example Use-Case:**  
   A city transit department can analyze peak bus occupancy times and reallocate vehicles accordingly.
+
+> **Diagram (Conceptual):**
+
+```mermaid
+flowchart LR
+    A[Camera Feeds] --> B[Apache Kafka]
+    B --> C[Apache Flink]
+    C --> D[ML Object Detection]
+    D --> E[Firebase/NoSQL]
+    E --> F[Dashboard & Analytics]
+
+
