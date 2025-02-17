@@ -5,7 +5,7 @@ A cutting-edge platform that repurposes existing hardware—from agency, city, a
 ---
 
 ## Table of Contents
-- [Diagram] (#diagram)
+- [Go to Diagram](#diagram)
 - [Overview](#overview)
 - [Features](#features)
 - [Architecture](#architecture)
