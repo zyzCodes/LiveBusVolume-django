@@ -9,14 +9,7 @@ A cutting-edge platform that repurposes existing hardware—from agency, city, a
 - [Overview](#overview)
 - [Features](#features)
 - [Architecture](#architecture)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [Deployment](#deployment)
 - [Usage](#usage)
-- [Benefits](#benefits)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ---
 
