@@ -8,6 +8,9 @@ env/
 # Ommit the Jar file
 *.jar
 
+# Omitt the pt file
+*.pt
+
 # Ignore the weights
 /efficientdet_d0_coco17_tpu-32
 

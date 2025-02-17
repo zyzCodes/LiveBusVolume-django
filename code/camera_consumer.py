@@ -11,7 +11,7 @@ import io
 from PIL import Image
 import ast
 import numpy as np
-# import tensorflow as tf
+from ml_inferencing import generate_volume
 
 
 def execute(env_file_path):
@@ -82,35 +82,20 @@ def execute(env_file_path):
 
     ds.map(classify,output_type=Types.STRING()).sink_to(database)
     env.execute(job_name="demo")
-# def return_volume(image:np.ndarray)->int:
-#     model_location = './efficientdet_d0_coco17_tpu-32'
-#     model = tf.saved_model.load(model_location)
-#     tensor = tf.convert_to_tensor(image)
-#     tensor = tensor[tf.newaxis,...]
-#     detections : dict = model(tensor)
-    
-#     num_detections = len(detections['detection_boxes'][0])
-#     volume = 0
-    
-#     for i in range(num_detections):
-#         detected = 0
-#         if detections['detection_classes'][0][i] == 1 and detections['detection_scores'][0][i] > 0.5:
-#             detected = 1
-#         volume += detected
-    
-#     return volume
+
     
 def classify(x):
     data : dict = json.loads(x)
-    data['og_bytes'] = ast.literal_eval(data['frame'])
-    del(data['frame'])
-    image = lzma.decompress(data['og_bytes'])
-    del(data['og_bytes'])
-    image = io.BytesIO(image)
-    image :Image.Image = Image.open(image).convert("RGB")
-    array = np.asarray(image)
-    # volume = return_volume(array)
-    data['volume'] = array.shape[0]
+    images = []
+    for datum in data['frames']:
+        bytes = ast.literal_eval(datum)
+        decompressed_bytes = lzma.decompress(bytes)
+        bytesIO = io.BytesIO(decompressed_bytes)
+        image :Image.Image = Image.open(bytesIO).convert("RGB")
+        image_array = np.asarray(image)
+        images.append(image_array)
+    del(data['frames'])
+    data['volume'] = generate_volume(arrays=images)
     
     print(f"Sending data for {data['bus_id']}")
     return json.dumps(data)
