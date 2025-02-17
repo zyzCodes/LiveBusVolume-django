@@ -65,7 +65,7 @@ flowchart LR
     D --> E[Firebase/NoSQL]
     E --> F[Dashboard & Analytics]
 
-## Technologies Used
+
 
 ### Data Streaming & Processing
 - **Confluent Apache Kafka**
