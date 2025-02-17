@@ -79,7 +79,6 @@ def capture(produce: bool, debug: bool, frame_count: int = -1) -> None:
     finally:
         cap.release()
         cv2.destroyAllWindows()
-        # Flush Kafka producer before closing
         print("Resources released and producer flushed.")
 
 
@@ -98,4 +97,5 @@ def main() -> None:
     print("Starting producer...", args)
     capture(args.produce, args.debug, args.frame_count)
 
-main()
+if __name__ == "__main__":
+    main()
