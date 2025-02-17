@@ -5,7 +5,7 @@ A cutting-edge platform that repurposes existing hardware—from agency, city, a
 ---
 
 ## Table of Contents
-
+- [Diagram] (#diagram)
 - [Overview](#overview)
 - [Features](#features)
 - [Architecture](#architecture)
@@ -169,12 +169,6 @@ To further enhance real-time analytics and improve decision-making, our platform
   - Introduce **incentive programs** to distribute passenger load across different hours or routes.
 
 
-- **Visualization:**  
-  Access the dashboard to view live analytics, monitor transit volume, and derive actionable insights.
-
-- **Example Use-Case:**  
-  A city transit department can analyze peak bus occupancy times and reallocate vehicles accordingly.
-
 > **Diagram (Conceptual):**
 
 ```mermaid
@@ -184,5 +178,7 @@ flowchart LR
     C --> D[ML Object Detection]
     D --> E[Firebase/NoSQL]
     E --> F[Dashboard & Analytics]
+
+```mermaid
 
 
